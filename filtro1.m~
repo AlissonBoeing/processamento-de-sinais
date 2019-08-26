@@ -1,0 +1,32 @@
+fp = 1e3;
+fs = 2e3;
+ws = 2*pi*fs;
+wp = 2*pi*fp;
+
+Ws = ws/wp;
+Wp = wp/wp;
+
+As = 40; % dB
+
+
+Ap = 3; % dB
+
+eps = sqrt((10^(0.1*Ap))-1);
+
+n = (log((10^(0.1*As))-1))/(2*log(Ws));
+n = ceil (n)
+
+for k = 1:n
+    p(k) = exp((i*pi*((2*k + n -1)/(2*n))))
+end
+
+D = poly(p)
+
+Ds = 20*log(abs(D));
+
+freqs(1,D)
+
+semilog(
+grid on;
+
+
